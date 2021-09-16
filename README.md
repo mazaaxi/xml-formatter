@@ -1,18 +1,13 @@
-
 # xml-formatter
 
   Converts XML into a human readable format (pretty print) while respecting the xml:space attribute.
   
   This module can also be used on the browser using the browserified version with a small footprint (8KB file size).
-  
-  [![Travis CI status](https://api.travis-ci.org/chrisbottin/xml-formatter.svg?branch=master)](https://travis-ci.org/chrisbottin/xml-formatter)
-
-  [![NPM](https://nodei.co/npm/xml-formatter.png?downloads=true)](https://nodei.co/npm/xml-formatter/)
 
 ## Installation
 
 ```
-$ npm install xml-formatter
+$ npm install https://github.com/mazaaxi/xml-formatter.git
 ```
 
 ## Example
@@ -79,7 +74,7 @@ Output:
  Page:
  
 ```html
-<script type="text/javascript" src="dist/browser/xml-formatter.js"></script>
+<script type="text/javascript" src="xml-formatter.js"></script>
 ```
 
  Usage:
