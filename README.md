@@ -49,7 +49,8 @@ var formattedXml = format(xml, {
     indentation: '  ', 
     filter: (node) => node.type !== 'Comment', 
     collapseContent: true, 
-    lineSeparator: '\n'
+    lineSeparator: '\n',
+    attrLineSeparator: '&#10;',
 });
 
 console.log(formattedXml);
@@ -70,6 +71,7 @@ Output:
 - `collapseContent` (Boolean, default=`false`] True to keep content in the same line as the element. Only works if element contains at least one text node
 - `lineSeparator` (String, default=`\r\n`) Specify the line separator to use
 - `whiteSpaceAtEndOfSelfclosingTag` (Boolean, default=false) to either end ad self closing tag with `<tag/>` or `<tag />`
+- `attrLineSeparator` (String, default=`\r\n`) Specify the attribute line separator to use
 
 
 ## On The Browser

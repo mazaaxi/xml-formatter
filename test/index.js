@@ -54,7 +54,7 @@ describe('XML formatter', function () {
     it('should format XML that already contains line breaks', function(done) {
         assertFormat('test/data6/xml*-input.xml', {}, done);
     });
-  
+
     it('should format XML adding a whitespace before self closing tag', function(done) {
         assertFormat('test/data7_white-space-on-closing-tag/xml*-input.xml', {whiteSpaceAtEndOfSelfclosingTag: true}, done);
     });
@@ -62,5 +62,18 @@ describe('XML formatter', function () {
     it('should format XML without indentation and line separation', function(done) {
         assertFormat('test/data9/xml*-input.xml', {indentation: '', lineSeparator: ''}, done);
     });
+
+    it('should format XML with the custom attribute line separator - 1', function(done) {
+        assertFormat('test/data10/xml*-input.xml', {attrLineSeparator: '&#10;'}, done);
+    });
+
+    it('should format XML with the custom attribute line separator - 2', function() {
+        const xml = '<div data-line="line1\nline2\r\nline3"></div>'
+        const expected = '<div data-line="line1&#10;line2&#10;line3"></div>'
+
+        const actual = format(xml, {attrLineSeparator: '&#10;'})
+
+        assert.equal(actual, expected);
+    })
 
 });

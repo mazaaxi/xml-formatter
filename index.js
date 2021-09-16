@@ -5,6 +5,7 @@
  *  @property {Boolean} [collapseContent=false] True to keep content in the same line as the element. Only works if element contains at least one text node
  *  @property {String} [lineSeparator='\r\n'] The line separator to use
  *  @property {String} [whiteSpaceAtEndOfSelfclosingTag=false] to either end ad self closing tag with `<tag/>` or `<tag />`
+ *  @property {String} [attrLineSeparator='\r\n'] The attribute line separator to use
  */
 
 /**
@@ -132,7 +133,8 @@ function processElementNode(node, state, preserveSpace) {
  */
 function processAttributes(state, attributes) {
     Object.keys(attributes).forEach(function(attr) {
-        const escaped = attributes[attr].replace(/"/g, '&quot;');
+        let escaped = attributes[attr].replace(/"/g, '&quot;');
+        escaped = escaped.replace(/\r?\n/g, state.options.attrLineSeparator);
         appendContent(state, ' ' + attr + '="' + escaped + '"');
     });
 }
@@ -164,6 +166,7 @@ function format(xml, options = {}) {
     options.collapseContent = options.collapseContent === true;
     options.lineSeparator = 'lineSeparator' in options ? options.lineSeparator : '\r\n';
     options.whiteSpaceAtEndOfSelfclosingTag = !!options.whiteSpaceAtEndOfSelfclosingTag;
+    options.attrLineSeparator = 'attrLineSeparator' in options ? options.attrLineSeparator : '\r\n';
 
     const parser = require('xml-parser-xo');
     const parsedXml = parser(xml, {filter: options.filter});

@@ -1,0 +1,6 @@
+<root>
+    <!-- test -->
+    <frag>
+        <p xml:space="preserve" data-lines="line1&#10;line2&#10;line3">This is some content</p>
+    </frag>
+</root>
